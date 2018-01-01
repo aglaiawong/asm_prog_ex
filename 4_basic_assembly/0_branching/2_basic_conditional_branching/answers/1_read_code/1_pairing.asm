@@ -44,6 +44,14 @@
 ;		2,2,3,1 -> 0
 ;		1D,F,F,1 -> 1
 
+
+; analyze like this: a(ecx), b(edx), c(esi), d(eax)
+; (a+d) = eax
+; (b+c) = edx
+; eax = eax - edx 
+; (a+d) - (b+c)
+;
+
 format PE console
 entry start
 

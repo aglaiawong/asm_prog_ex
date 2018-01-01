@@ -30,7 +30,7 @@
 ;	ANSWER:
 ;	
 ;		Two numbers a and b are given by user input. b is subtracted from a and 
-;		when the carry flag is set, this means that a is larger than b, the
+;		[when the carry flag is set, this means that a is larger than b], the
 ;		output will be 1 and else the output will be 0. This function checks
 ;		if a is larger than b and vice versa.
 ;       

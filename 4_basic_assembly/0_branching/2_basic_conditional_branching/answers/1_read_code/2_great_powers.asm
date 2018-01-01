@@ -50,8 +50,8 @@
 ;		6 -> 40
 ;		8 -> 100
 ;		9 -> 200
-;		F -> 8000
-;		FF -> 0
+;		F -> 8000   ; 2^16 yet overflow
+;		FF -> 0     ; overflowed already 
 ;
 ; 5.    Given the input of 0, what is the output of this program?
 ;       Why does it take so long for the program to compute it?
@@ -84,17 +84,17 @@ start:
 
     call    read_hex
     mov     ecx,1
-	inc		eax
-	dec		eax
-	jz		lb2
+	inc		eax     ; increment before decrement to prevent subtracting 0, giving -1
+	dec		eax     ; also use inc & dec to set the flags 
+	jz		lb2     ; if result of dec equals to zero? 
 
-lb1:
-    add     ecx,ecx
+lb1:    ; a loop for eax!=0, to decrement eax to zero
+    add     ecx,ecx     ; upon looping, gives 2^x (or 2x): 1+1, 2+2, 4+4, 8+8
     dec     eax
 	jnz		lb1
 
 lb2:
-    mov     eax,ecx
+    mov     eax,ecx     ;if equal to zero, return 1 
     call    print_eax
 
     ; Exit the process:
